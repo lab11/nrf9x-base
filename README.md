@@ -23,7 +23,9 @@ Only tested on Ubuntu
 6. Add the following to your .bashrc file
 
     `export ZEPHYR_TOOLCHAIN_VARIANT=gnuarmemb`
+    
     `export GNUARMEMB_TOOLCHAIN_PATH=$HOME/<YOUR_GCC_DIRECTORY>`
+    
     `export ZEPHYR_BASE=$HOME/<YOUR_NRF_SOURCE_DIRECTORY>/ncs/zephyr`
     
 Building and flashing an application
@@ -33,10 +35,14 @@ Building and flashing an application
 Troubleshooting
 ---------------
 If you have any issues building one of the samples you may need to install some tools with pip3. For example:
+
     `pip3 install pyelftools`
-Also, you may need to upgrade to the latest versions of <a href="https://cmake.org/download/">cmake</a> and <a href="https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm/downloads">gcc-arm-none-eabi</a>. Make sure to verify your have upgraded using
+    
+Also, you may need to upgrade to the latest versions of <a href="https://cmake.org/download/">cmake</a> and <a href="https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm/downloads">gcc-arm-none-eabi</a>. Make sure to verify your have upgraded using:
+
     `cmake --version` and 
     `arm_none_eabi_gcc --version` 
+    
 If the versions are not upgraded, add the directories to your PATH.
 
 
