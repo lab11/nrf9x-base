@@ -18,7 +18,7 @@ Only tested on Ubuntu
 
 4. Launch the “Getting Started Assistant” from the “Launch app” tab. At the time of writing, the latest version was v1.0.1.
 
-5. Follow all of the steps in the first 2 segments of the Getting Started Assistant: Install the toolchain and Clone the nRF Connect SDK. The final are only necessary if you plan to use SEGGER Embedded Studio.
+5. Follow all of the steps in the first 2 segments of the Getting Started Assistant: Install the toolchain and Clone the nRF Connect SDK. The final 2 are only necessary if you plan to use SEGGER Embedded Studio.
 
 6. Add the following to your .bashrc file:
 
