@@ -43,7 +43,7 @@ Also, you may need to upgrade to the latest versions of <a href="https://cmake.o
     
 If the versions are not upgraded, add the directories to your PATH.
 
-Finally, if you are still having issues it may be that you checked out an older release. Check the <a href="https://developer.nordicsemi.com/nRF_Connect_SDK/doc/latest/nrf/release_notes.html">release notes</a> for the release to find out the corresponding tag of the latest release. 
+Finally, if you are still having issues it may be that you checked out an older release. Check the <a href="https://developer.nordicsemi.com/nRF_Connect_SDK/doc/latest/nrf/release_notes.html">release notes</a> to find out the corresponding tag of the latest release. 
 
     git checkout <ncs_tag>
     west update
