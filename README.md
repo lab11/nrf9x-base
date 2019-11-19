@@ -34,7 +34,7 @@ Troubleshooting
 ---------------
 If you have any issues building one of the samples you may need to install some tools with pip3. For example:
 
-    `pip3 install pyelftools`
+    pip3 install pyelftools
     
 Also, you may need to upgrade to the latest versions of <a href="https://cmake.org/download/">cmake</a> and <a href="https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm/downloads">gcc-arm-none-eabi</a>. Make sure to verify your have upgraded using:
 
