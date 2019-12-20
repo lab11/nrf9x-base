@@ -29,15 +29,25 @@ Only tested on Ubuntu
         export ZEPHYR_BASE=$HOME/<YOUR_NRF9X_BASE_DIRECTORY>/zephyr
 <!--TODO Dynamically set environment variables on every build rather than storing in .bashrc-->
 
+8. Refresh your terminal:
+
+        source ~/.bashrc
+
 8. Change directories into the nrf9x\_base repo and run make setup.
 
         cd <YOUR_NRF9X_BASE_DIRECTORY>
 
-9. Set the NCS\_TAG variable in the Makefile to be the latest tag. Refer to instructions in the Makefile.
+9. Set NCS\_TAG variable in the Makefile located in the root directory to be the latest tag. Refer to instructions in the Makefile.
 
 10. Run the setup
 
         make setup
+        
+    The final script is currently volatile and occasionally fails. If it fails with result 
+    
+        make/AppMakefile.mk:31: recipe for target 'setup' failed
+        
+    Disregard, the setup has succeeded. 
 
 <!--TODO Perhaps add scripts to setup all the tools -->
 Building and flashing an application
