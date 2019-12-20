@@ -22,9 +22,9 @@ Only tested on Ubuntu
 
 6. Add the following to your .bashrc file:
 
-        export ZEPHYR_TOOLCHAIN_VARIANT=gnuarmemb
+  TODO  export ZEPHYR_TOOLCHAIN_VARIANT=gnuarmemb
         export GNUARMEMB_TOOLCHAIN_PATH=$HOME/<YOUR_GCC_DIRECTORY>
-        export ZEPHYR_BASE=$HOME/<YOUR_NRF_SOURCE_DIRECTORY>/ncs/zephyr
+  TODO  export ZEPHYR_BASE=$HOME/<YOUR_NRF_SOURCE_DIRECTORY>/ncs/zephyr
     
 Building and flashing an application
 ------------------------------------
