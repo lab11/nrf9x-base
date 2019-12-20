@@ -3,40 +3,45 @@
 # specify `all` as our default rule
 all:
 # ---- Variables
-BASE_DIR = $(realpath ../../)
-APP_DIR = $(realpath ./)
-ZEPHYR_BASE = $(BASE_DIR)/ncs/zephyr
-ZEPHYR_TOOLCHAIN_VARIANT = gnuarmemb
 ZEPHYR_CMAKELISTS = CMakeLists.txt
 BUILD_DIR = build
 
 
 
-# ---- Output filenames
-
-
 # ---- Include additional supporting makefiles
-# Build settings
-include $(BASE_DIR)/make/Configuration.mk
-include $(BASE_DIR)/make/Includes.mk
 include $(BASE_DIR)/make/Program.mk
+include $(BASE_DIR)/make/Includes.mk
 
-# Various file inclusions
-
+$(ZEPHYR_CMAKELISTS): 
+	$(Q)python3 $(BASE_DIR)/make/zephyr_cmake_gen.py $(PROJECT_NAME) "$(APP_SOURCES)" --include_dirs "$(APP_HEADER_PATHS)" > $@
 
 # ---- Rules for building apps
-.PHONY:	all
-$(ZEPHYR_CMAKELISTS): Makefile
-  $(Q)python3 $(BASE_DIR)/make/zephyr_cmake_gen.py $(PROJECT_NAME) $(APP_SOURCES) --include_dirs $(APP_HEADER_PATHS) > $@
-
 .PHONY: build
-build::
-cd $(APP_DIR) && west build -b $(BOARD)
+build: $(ZEPHYR_CMAKELISTS)
+	west build -b $(BOARD)
+	rm $(ZEPHYR_CMAKELISTS)
 
 .PHONY: clean
 clean::
 	@echo " Cleaning..."
 	$(Q)rm -rf $(BUILD_DIR)
+
+.PHONY: setup
+setup::
+	pip3 install --user west
+	#mkdir ncs && cd $(BASE_DIR)/ncs
+	#cd $(BASE_DIR)/ncs/ && west init -m https://github.com/NordicPlayground/fw-nrfconnect-nrf
+	west init -m https://github.com/NordicPlayground/fw-nrfconnect-nrf
+	#cd $(BASE_DIR)/ncs/ && west update
+	#cd $(BASE_DIR)/ncs/nrf && git checkout $(NCS_TAG) && west update
+	#cd $(BASE_DIR)/ncs && pip3 install --user -r zephyr/scripts/requirements.txt
+	#cd $(BASE_DIR)/ncs && pip3 install --user -r nrf/scripts/requirements.txt
+	#cd $(BASE_DIR)/ncs && pip3 install --user -r mcuboot/scripts/requirements.txt
+	west update
+	cd $(BASE_DIR)/nrf && git checkout $(NCS_TAG) && west update
+	pip3 install --user -r zephyr/scripts/requirements.txt
+	pip3 install --user -r nrf/scripts/requirements.txt
+	pip3 install --user -r mcuboot/scripts/requirements.txt
 
 
 # ---- Dependencies
