@@ -17,7 +17,8 @@ GDB_PORT_NUMBER ?= 2331
 
 .PHONY: flash
 flash: all
-  west flash
+	west flash
+
 .PHONY: serial
 serial:
 	miniterm.py - 115200 --raw

@@ -18,17 +18,45 @@ Only tested on Ubuntu
 
 4. Launch the “Getting Started Assistant” from the “Launch app” tab. At the time of writing, the latest version was v1.0.1.
 
-5. Follow all of the steps in the first 2 segments of the Getting Started Assistant: Install the toolchain and Clone the nRF Connect SDK. The final 2 are only necessary if you plan to use SEGGER Embedded Studio.
+5. Follow all of the steps in the first segment of the Getting Started Assistant: Install the toolchain. The final 3 are only necessary if you don't plan to use the nrf9x-base repo and use SEGGER Embedded Studio.
 
-6. Add the following to your .bashrc file:
+6. Clone this repo
 
-  TODO  export ZEPHYR_TOOLCHAIN_VARIANT=gnuarmemb
+7. Add the following to your .bashrc file:
+
+        export ZEPHYR_TOOLCHAIN_VARIANT=gnuarmemb
         export GNUARMEMB_TOOLCHAIN_PATH=$HOME/<YOUR_GCC_DIRECTORY>
-  TODO  export ZEPHYR_BASE=$HOME/<YOUR_NRF_SOURCE_DIRECTORY>/ncs/zephyr
-    
+        export ZEPHYR_BASE=$HOME/<YOUR_NRF9X_BASE_DIRECTORY>/zephyr
+<!--TODO Dynamically set environment variables on every build rather than storing in .bashrc-->
+
+8. Change directories into the nrf9x\_base repo and run make setup.
+        cd <YOUR_NRF9X_BASE_DIRECTORY>
+
+9. Set the NCS\_TAG variable in the Makefile to be the latest tag. Refer to instructions in the Makefile.
+
+10. Run the setup
+        make setup
+
+<!--TODO Perhaps add scripts to setup all the tools -->
 Building and flashing an application
 ------------------------------------
-1. Read through the following <a href="https://devzone.nordicsemi.com/nordic/cellular-iot-guides/b/getting-started-cellular/posts/nrf-connect-sdk-tutorial">documentation</a> to learn how the to build and flash an application.
+1. Applications are stored in the apps directory. This is where all code related to a specific application lives. To build an application copy the Makefile Example from the make directory into your application directory and make any necessary modifications to it. Then build the application:
+        make build
+
+2. To clean the build files use:
+        make clean
+
+3. To flash your application:
+        make flash
+
+<!--TODO Add flash directions from nrf52x-base README -->
+
+4. To setup a serial connection (You can also use the LTE Link Monitor in the Nrf Connect:
+        make serial
+
+Additional Reading
+------------------
+Read through the following <a href="https://devzone.nordicsemi.com/nordic/cellular-iot-guides/b/getting-started-cellular/posts/nrf-connect-sdk-tutorial">documentation</a> to learn how everything works in the background.
     
 Troubleshooting
 ---------------
@@ -43,9 +71,5 @@ Also, you may need to upgrade to the latest versions of <a href="https://cmake.o
     
 If the versions are not upgraded, add the directories to your PATH.
 
-Finally, if you are still having issues it may be that you checked out an older release. Check the <a href="https://developer.nordicsemi.com/nRF_Connect_SDK/doc/latest/nrf/release_notes.html">release notes</a> to find out the corresponding tag of the latest release. 
-
-    git checkout <ncs_tag>
-    west update
 
 
