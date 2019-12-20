@@ -30,28 +30,34 @@ Only tested on Ubuntu
 <!--TODO Dynamically set environment variables on every build rather than storing in .bashrc-->
 
 8. Change directories into the nrf9x\_base repo and run make setup.
+
         cd <YOUR_NRF9X_BASE_DIRECTORY>
 
 9. Set the NCS\_TAG variable in the Makefile to be the latest tag. Refer to instructions in the Makefile.
 
 10. Run the setup
+
         make setup
 
 <!--TODO Perhaps add scripts to setup all the tools -->
 Building and flashing an application
 ------------------------------------
 1. Applications are stored in the apps directory. This is where all code related to a specific application lives. To build an application copy the Makefile Example from the make directory into your application directory and make any necessary modifications to it. Then build the application:
+
         make build
 
 2. To clean the build files use:
+
         make clean
 
 3. To flash your application:
+
         make flash
 
 <!--TODO Add flash directions from nrf52x-base README -->
 
-4. To setup a serial connection (You can also use the LTE Link Monitor in the Nrf Connect:
+4. To setup a serial connection (You can also use the LTE Link Monitor in the Nrf Connect):
+
         make serial
 
 Additional Reading
