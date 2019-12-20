@@ -29,14 +29,7 @@ clean::
 .PHONY: setup
 setup::
 	pip3 install --user west
-	#mkdir ncs && cd $(BASE_DIR)/ncs
-	#cd $(BASE_DIR)/ncs/ && west init -m https://github.com/NordicPlayground/fw-nrfconnect-nrf
 	west init -m https://github.com/NordicPlayground/fw-nrfconnect-nrf
-	#cd $(BASE_DIR)/ncs/ && west update
-	#cd $(BASE_DIR)/ncs/nrf && git checkout $(NCS_TAG) && west update
-	#cd $(BASE_DIR)/ncs && pip3 install --user -r zephyr/scripts/requirements.txt
-	#cd $(BASE_DIR)/ncs && pip3 install --user -r nrf/scripts/requirements.txt
-	#cd $(BASE_DIR)/ncs && pip3 install --user -r mcuboot/scripts/requirements.txt
 	west update
 	cd $(BASE_DIR)/nrf && git checkout $(NCS_TAG) && west update
 	pip3 install --user -r zephyr/scripts/requirements.txt
