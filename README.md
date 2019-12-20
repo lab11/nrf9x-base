@@ -1,9 +1,6 @@
 Nordic nRF9x Support Files
 ==========================
 
-In Progress - Non-Stable - MakeFile workflow in development
------------------------------------------------------------
-
 Starting point and shared code for Nordic nRF9x platforms.
 
 Setting up Toolchain
@@ -27,6 +24,7 @@ Only tested on Ubuntu
         export ZEPHYR_TOOLCHAIN_VARIANT=gnuarmemb
         export GNUARMEMB_TOOLCHAIN_PATH=$HOME/<YOUR_GCC_DIRECTORY>
         export ZEPHYR_BASE=$HOME/<YOUR_NRF9X_BASE_DIRECTORY>/zephyr
+        
 <!--TODO Dynamically set environment variables on every build rather than storing in .bashrc-->
 
 8. Refresh your terminal:
@@ -52,7 +50,7 @@ Only tested on Ubuntu
 <!--TODO Perhaps add scripts to setup all the tools -->
 Building and flashing an application
 ------------------------------------
-1. Applications are stored in the apps directory. This is where all code related to a specific application lives. To build an application copy the Makefile Example from the make directory into your application directory and make any necessary modifications to it. Then build the application:
+1. Applications are stored in the apps directory. This is where all code related to a specific application lives. To build an application copy the Makefile Example from the make directory into your application directory and make any necessary modifications to it. Then build from the application directory e.g. apps/blink:
 
         make build
 
