@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# For the latest tag, go to
+# https://developer.nordicsemi.com/nRF_Connect_SDK/doc/latest/nerf/release-notes.html#release-notes
+NCS_TAG="v1.1.0"
+
+# Update pip because some dependencies need it
+python3 -m pip install --upgrade pip
+
+pip3 install --user west
+west init -m https://github.com/NordicPlayground/fw-nrfconnect-nrf
+west update
+cd nrf && git checkout $(NCS_TAG) && west update && cd ..
+pip3 install --user -r zephyr/scripts/requirements.txt
+pip3 install --user -r nrf/scripts/requirements.txt
+pip3 install --user -r mcuboot/scripts/requirements.txt
+
