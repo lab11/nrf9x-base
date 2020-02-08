@@ -1,7 +1,5 @@
-# Commands and configurations for loading code onto the Musca-A board
-# Included by Board.mk
-
-# ---- JTAG configurations
+# Commands and configuration for loading code. Mostly a passthrough to `west`
+# for now.
 
 # JTAG tools
 JLINK = JLinkExe
